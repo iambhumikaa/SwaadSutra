@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe form</title>
+</head>
+<body>
+    <div class="center_div">
+        <div class="main_form">
+            <form action="/editRecipe" method="GET" enctype="multipart/form-data" class="form" aria-labelledby="Edit-recipe-form-heading">
+                <div class="cen_sub_div">
+                    <h1 class="heading">Add Recipe</h1>
+                </div>
+
+                <div class="cen_sub_div">
+                    <h2 class="subline">Here, you can add your own recipes in this recipe book. Enjoy your personalized
+                        recipe book anytime anywhere!</h2>
+                </div>
+
+                <div class="blockDiv">
+                    <label for="Recipe-name" class="input">Recipe Name:</label>
+                    <input class="inputBox" id="RecipeName" name="name" value=" <%= recipe.name %>" type="text" placeholder="Recipe Name"
+                        required><br>
+
+                    <label for="Ingredients" class="input">Ingredients:</label>
+                    <textarea class="input_textBox" value="<%= recipe.ingredients %>" id="RecipeIngredients" name="ingredients" required></textarea><br>
+
+                    <label for="Steps" class="input">Steps:</label>
+                    <textarea class="input_textBox" value="<%= recipe.steps %>" id="RecipeSteps" name="steps" required></textarea><br>
+
+                    <label for="Image upload" class="input">Upload an image of your dish:</label>
+                    <input type="file" name="image" id="RecipeImg"><br>
+
+                    <div class="cen_sub_div">
+                        <button type="submit" class="submit">Update Recipe</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe Form</title>
+    <link rel="stylesheet" href="/main.css"> <!-- Link your CSS -->
+</head>
+<body>
+    <div class="center_div">
+        <div class="main_form">
+            <form action="/updateRecipe/<%= recipe.id %>" method="POST" enctype="multipart/form-data" class="form" aria-labelledby="Edit-recipe-form-heading">
+                
+                <div class="cen_sub_div">
+                    <h1 class="heading">Edit Recipe</h1>
+                </div>
+
+                <div class="cen_sub_div">
+                    <h2 class="subline">Update your recipe below. You can change the image too if you want.</h2>
+                </div>
+
+                <div class="blockDiv">
+                    <label for="Recipe-name" class="input">Recipe Name:</label>
+                    <input class="inputBox" id="RecipeName" name="name" value="<%= recipe.name %>" type="text" placeholder="Recipe Name" required><br>
+
+                    <label for="Ingredients" class="input">Ingredients:</label>
+                    <textarea class="input_textBox" id="RecipeIngredients" name="ingredients" required><%= recipe.ingredients %></textarea><br>
+
+                    <label for="Steps" class="input">Steps:</label>
+                    <textarea class="input_textBox" id="RecipeSteps" name="steps" required><%= recipe.steps %></textarea><br>
+
+                    <label class="input">Current Image:</label><br>
+                    <img src="<%= recipe.image_url %>" alt="<%= recipe.name %>" width="200"><br><br>
+
+                    <label for="Image upload" class="input">Upload new image:</label>
+                    <input type="file" name="image" id="RecipeImg"><br> 
+
+                    <div class="cen_sub_div">
+                        <button type="submit" class="submit">Update Recipe</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

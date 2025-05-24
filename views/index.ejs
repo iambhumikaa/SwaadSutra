@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SwaadSutra - A recipe book website to save, savor, and share your kitchen creations.">
+    <title>SwaadSutra</title>
+    <link href="./main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="nav_main">
+        <spam class="logo">SwaadSutra</spam>
+        <div class="nav_options_div">
+            <nav class="nav_bar_bar">
+                <ul class="nav_bar">
+                    <li><a href="/" class="navTag">
+                            Home
+                        </a></li>
+                    <li><a href="#about" class="navTag">
+                            About Us
+                        </a></li>
+                    <li><a href="/favourite" class="navTag">
+                            Favorites
+                        </a></li>
+                    <li><a href="#recipeBook" class="navTag">
+                            My Recipes
+                        </a></li>
+                    <div class="searh_div">
+                        <form style="display: flex;background: none;" action="/search" method="GET">
+                            <input id="searchInput" type="text" placeholder="" class="search_box" name="query">
+                            <button aria-label="search-button" type="submit"
+                                style="background: none; padding: 0%; border-style: none;">
+                                <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <!-- <div class="mainDivShowBox hidden">
+        <div class="show_box">
+            <ul class="searchBoxList"></ul>
+        </div>
+    </div> -->
+
+    <!-- Welcome text section -->
+    <div class="landing_pg_centerDiv">
+        <section id="landing_pg">
+            <h1 class="title">WELCOME TO<br>
+                <bold style="font-size: 5.3rem;  letter-spacing: 20px;"> SWAADSUTRA</bold><br>
+                <spam style="font-size: 1.7rem; color:rgb(54, 54, 54);">Your personal recipe journal — save, savor, and
+                    share
+                    your kitchen creations.</spam>
+            </h1>
+        </section>
+    </div>
+
+    <div style="background-color: rgb(255, 251, 241);">
+        <!-- About us section -->
+        <section id="about" class="aboutUs">
+            <div class="insideDiv">
+                <div class="aboutUsContainer">
+                    <img alt="meal-image" class="aboutUsImg" src="./FoodGallery/fullmeal.jpg">
+                </div>
+                <div class="insideInsideDiv">
+                    <h1 class="aboutUsTitle">About Us</h1>
+                    <p class="aboutUsPara">Welcome to <strong>SwaadSutra </strong>your personal digital cookbook and
+                        recipe
+                        journal. SwaadSutra helps you save your unique recipes in one safe, easy-to-access
+                        place. Whether it's a traditional family dish or your latest kitchen experiment, you can
+                        document
+                        every step with images, ingredients, and notes.
+                    <p class="aboutUsPara"> You can search and revisit your creations anytime without flipping through
+                        old
+                        diaries or forgetting details. Share your
+                        culinary skills, stay organized, and feel proud every time you scroll through your collection.
+                    </p>
+                    <p class="aboutUsPara"> SwaadSutra celebrates your kitchen moments and helps them live on forever.
+                        Because your recipes deserve to be remembered, enjoyed, and passed down. So, Preserve the taste
+                        of
+                        every memory with SwaadSutra.
+                        🍳
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Recipe book -->
+        <section class="recipes-container" id="recipeBook">
+            <h2 class="recipeTxt">Recipe Book</h2>
+            <div class="recipes">
+                <% recipes.forEach(recipe=> { %>
+                    <div>
+                        <% if (recipe.image_url) { %>
+                            <img src="<%= recipe.image_url %>" alt="<%= recipe.name %>" class="recipeImg"
+                                data-id="<%= recipe.id %>">
+                            <% } %>
+                                <div class="recipeImgIconsDivMain" onclick="recipepg('<%= recipe.id %>')">
+                                    <div class="recipeImgIconsDiv">
+
+                                        <form action="/favourite/add/<%= recipe.id %>" method="POST">
+                                            <input type="hidden" name="name" value="<%= recipe.name %>">
+                                            <input type="hidden" name="image_url" value="<%= recipe.image_url %>">
+                                            <button aria-label="like-button" type="submit" class="heart-btn">
+                                                <svg class="heart iconRecipeCont" xmlns="http://www.w3.org/2000/svg"
+                                                    width="50" height="50" viewBox="0 0 24 24">
+                                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                                                2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09 
+                                                C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 
+                                                22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+
+                                        <form action="/editRecipe/<%= recipe.id %>" method="GET">
+                                            <button aria-label="edit-button" type="submit"
+                                                style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                <svg class="iconRecipeCont edit" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
+                                                </svg></button>
+                                        </form>
+
+                                        <form action="/recipe/delete/<%= recipe.id %>" method="POST"
+                                            onclick="return confirm('Are you sure you want to delete this recipe?');">
+                                            <button type="submit" aria-label="delete-button"
+                                                style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                <svg class="iconRecipeCont delete" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                                </svg></button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <h2 class="recipeImgTxt">
+                                    <%= recipe.name %>
+                                </h2>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+
+        <!-- Add recipe section -->
+        <section class="addRecipe">
+            <button aria-label="add-recipe-button" class="addRecipeBtn" onclick="addRecipeForm()">
+                <svg class="addRecipeSVG" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z" />
+                </svg>
+                Add Recipe
+            </button>
+        </section>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

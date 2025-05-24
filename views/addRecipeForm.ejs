@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the add recipe page">
+    <title>Form</title>
+    <link href="./main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="center_div">
+        <div class="main_form">
+            <form action="/addRecipe" method="POST" enctype="multipart/form-data" class="form" aria-labelledby="Add-recipe-form-heading">
+                <div class="cen_sub_div">
+                    <h1 class="heading">Add Recipe</h1>
+                </div>
+
+                <div class="cen_sub_div">
+                    <h2 class="subline">Here, you can add your own recipes in this recipe book. Enjoy your personalized
+                        recipe book anytime anywhere!</h2>
+                </div>
+
+                <div class="blockDiv">
+                    <label for="Recipe-name" class="input">Recipe Name:</label>
+                    <input class="inputBox" id="RecipeName" name="name" type="text" placeholder="Recipe Name"
+                        required><br>
+
+                    <label for="Ingredients" class="input">Ingredients:</label>
+                    <textarea class="input_textBox" id="RecipeIngredients" name="ingredients" required></textarea><br>
+
+                    <label for="Steps" class="input">Steps:</label>
+                    <textarea class="input_textBox" id="RecipeSteps" name="steps" required></textarea><br>
+
+                    <label for="Image upload" class="input">Upload an image of your dish:</label>
+                    <input type="file" name="image" id="RecipeImg"><br>
+
+                    <div class="cen_sub_div">
+                        <button type="submit" class="submit">Save Recipe</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
